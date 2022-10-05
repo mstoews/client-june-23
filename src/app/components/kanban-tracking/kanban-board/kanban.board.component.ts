@@ -59,7 +59,7 @@ export class KanbanBoardComponent implements OnInit, OnDestroy {
   action: string;
   // tslint:disable-next-line: variable-name
 
-  sTitle = 'Kanban Task Modify';
+  sTitle = 'Kanban Task Add';
   cPriority: string;
   cRAG: string;
   cType: string;
