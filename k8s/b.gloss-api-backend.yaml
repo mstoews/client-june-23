@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: gloss-api-backend
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       component: gloss-api-backend

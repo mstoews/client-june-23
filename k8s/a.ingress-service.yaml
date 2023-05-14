@@ -1,31 +1,37 @@
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
+  name: backend-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
-  name: backend-ingress
 spec:
   rules:
   - http:
       paths:
-        - backend:
-            serviceName: gloss-api-backend
-            servicePort: 3010
-          path: /backend(/|$)(.*)
-
+        - path: /backend(/|$)(.*)
+          pathType: Prefix
+          backend:
+            service:
+              name: gloss-api-backend
+              port: 
+                number: 3010
 --- 
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
+  name: client-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
-  name: client-ingress
 spec:
   rules:
   - http:
       paths:
-        - backend:
-           serviceName: gloss-api-client
-           servicePort: 80
-          path: /
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: gloss-api-client
+              port: 
+                number: 80
+
 
